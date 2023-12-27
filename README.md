@@ -15,8 +15,7 @@
   - `BufferedReader` 및 `FileReader`를 사용하여 파일을 읽습니다.
   - 파일의 각 줄은 `String.split` 메소드를 이용하여 파싱되며, 결과는 `ClothingData` 객체로 변환되어 리스트에 추가됩니다.
   - 이 과정에서 발생하는 예외는 적절하게 처리됩니다.
-
-## 스크린샷
+    
 <img width="250" src="https://github.com/GaEunJang/WALAB_CRUDproject2/assets/103119924/c78224c7-9533-48dd-a872-cc47d93a7a4a.png"><br>
 
 <img width="250" src="https://github.com/GaEunJang/WALAB_CRUDproject2/assets/103119924/35d0b15e-6de4-4af9-a36f-c27cda409e1c.png"><br>
@@ -29,5 +28,4 @@
   - 메모리에 있는 `ClothingData` 객체들은 파일 포맷으로 변환되어 저장됩니다.
   - 이 과정에서 발생하는 예외는 적절하게 처리됩니다.
 
-## 스크린샷
 <img width="250" src="https://github.com/GaEunJang/WALAB_CRUDproject2/assets/103119924/1c2a6f32-4d32-444d-88f6-021c4e8e276e.png"><br>
