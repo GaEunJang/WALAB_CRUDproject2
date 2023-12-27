@@ -25,7 +25,7 @@ public class Main {
             System.out.println("  7. 파일 저장하기                ");
             System.out.println("  0. 종료                       ");
             System.out.println("-------------------------");
-            System.out.println("원하는 작업을 선택해주세요.");
+            System.out.print("원하는 작업을 선택해주세요. : ");
 
             choice=in.nextInt();
 
