@@ -10,11 +10,11 @@
 - **파일 불러오기**: `data.txt` 파일에서 의류 데이터를 불러옵니다.
 
 ## 파일 입출력 과정 추가
-- **데이터 로드**
-  - 프로그램 시작 시, `DataManager.loadDataFromFile()` 메소드가 `data.txt` 파일을 찾아 읽어 데이터를 로드합니다.
-  - `BufferedReader` 및 `FileReader`를 사용하여 파일을 읽습니다.
-  - 파일의 각 줄은 `String.split` 메소드를 이용하여 파싱되며, 결과는 `ClothingData` 객체로 변환되어 리스트에 추가됩니다.
-  - 이 과정에서 발생하는 예외는 적절하게 처리됩니다.
+### 데이터 로드
+- 프로그램 시작 시, `DataManager.loadDataFromFile()` 메소드가 `data.txt` 파일을 찾아 읽어 데이터를 로드합니다.
+- `BufferedReader` 및 `FileReader`를 사용하여 파일을 읽습니다.
+- 파일의 각 줄은 `String.split` 메소드를 이용하여 파싱되며, 결과는 `ClothingData` 객체로 변환되어 리스트에 추가됩니다.
+- 이 과정에서 발생하는 예외는 적절하게 처리됩니다.
     
 <img width="250" src="https://github.com/GaEunJang/WALAB_CRUDproject2/assets/103119924/c78224c7-9533-48dd-a872-cc47d93a7a4a.png"><br>
 
@@ -22,10 +22,10 @@
 
 <img width="250" src="https://github.com/GaEunJang/WALAB_CRUDproject2/assets/103119924/3cb2b919-fa5a-4666-99d5-7c663952686a.png"><br>
 
-- **데이터 저장**
-  - 사용자가 '파일 저장하기' 옵션을 선택하면, `DataManager.saveDataToFile()` 메소드가 호출됩니다.
-  - `BufferedWriter` 및 `FileWriter`를 사용하여 데이터를 `data.txt` 파일에 저장합니다.
-  - 메모리에 있는 `ClothingData` 객체들은 파일 포맷으로 변환되어 저장됩니다.
-  - 이 과정에서 발생하는 예외는 적절하게 처리됩니다.
+### 데이터 저장
+- 사용자가 '파일 저장하기' 옵션을 선택하면, `DataManager.saveDataToFile()` 메소드가 호출됩니다.
+- `BufferedWriter` 및 `FileWriter`를 사용하여 데이터를 `data.txt` 파일에 저장합니다.
+- 메모리에 있는 `ClothingData` 객체들은 파일 포맷으로 변환되어 저장됩니다.
+- 이 과정에서 발생하는 예외는 적절하게 처리됩니다.
 
 <img width="250" src="https://github.com/GaEunJang/WALAB_CRUDproject2/assets/103119924/1c2a6f32-4d32-444d-88f6-021c4e8e276e.png"><br>
