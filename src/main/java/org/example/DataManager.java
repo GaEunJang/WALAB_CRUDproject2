@@ -1,64 +1,38 @@
 package org.example;
 
-import java.io.*;
-import java.nio.file.Paths;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
 
 public class DataManager {
-    private static ArrayList<ClothingData> dataList = new ArrayList<>();
-    private static final String path = Paths.get(".").toAbsolutePath().normalize().toString();
-    private static final String filename = path + "/data.txt";
-    private static int nextId=1;
-    public static Scanner in = new Scanner(System.in);
+    private ArrayList<ClothingData> dataList;
+    private FileHandler fileHandler;
+    private int nextId;
+    private Scanner in;
 
-    public static void loadDataFromFile() throws IOException {
-        File file = new File(filename);
-        if (file.exists()) {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            System.out.println("파일을 불러옵니다...");
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] dataParts = line.split(", ");
+    public DataManager(FileHandler fileHandler) {
+        this.fileHandler = fileHandler;
+        this.dataList = new ArrayList<>();
+        this.nextId = 1;
+        this.in = new Scanner(System.in);
 
-                if (dataParts.length != 5) {
-                    System.out.println("잘못된 데이터 형식: " + line);
-                    continue;
-                }
-
-                try {
-                    int id = Integer.parseInt(dataParts[0].trim());
-                    String type = dataParts[1].trim();
-                    String name = dataParts[2].trim();
-                    int price = Integer.parseInt(dataParts[3].trim());
-                    String description = dataParts[4].trim();
-
-                    dataList.add(new ClothingData(id, type, name, price, description));
-                } catch (NumberFormatException e) {
-                    System.out.println("데이터 파싱 중 숫자 형식 오류: " + line);
-                } catch (Exception e) {
-                    System.out.println("데이터 파싱 중 오류: " + line);
-                }
-            }
-
-            reader.close();
-            System.out.println("파일 불러오기 완료.\n");
-        }else {
-            System.out.println("파일이 없으므로 새 파일을 생성합니다.\n");
+        try {
+            this.dataList = fileHandler.loadData();
+            this.nextId = dataList.isEmpty() ? 1 : dataList.get(dataList.size() - 1).getId() + 1;
+        } catch (IOException e) {
+            System.out.println("파일을 불러오는 중 오류가 발생했습니다.");
         }
     }
 
-    public static void saveDataToFile() throws IOException {
-        PrintWriter printWriter = new PrintWriter(new FileWriter(filename));
-        System.out.println("파일에 데이터를 저장합니다...");
-        for (ClothingData data : dataList) {
-            printWriter.println(data.toFileString()); // 데이터를 문자열로 변환하는 메소드
+    public void saveData() {
+        try {
+            fileHandler.saveData(dataList);
+        } catch (IOException e) {
+            System.out.println("파일을 저장하는 중 오류가 발생했습니다.");
         }
-        printWriter.close();
-        System.out.println("파일을 성공적으로 저장했습니다.\n");
     }
-    public static void createData(){
+    public void createData(){
         System.out.println();
         System.out.print("종류를 입력하세요. (아우터, 상의, 하의, 기타) : ");
         String type=in.nextLine();
@@ -77,7 +51,7 @@ public class DataManager {
         System.out.println("데이터가 성공적으로 생성되었습니다.\n");
     }
 
-    public static void readData() {
+    public void readData() {
         if (dataList.isEmpty()) {
             System.out.println("데이터가 없습니다.\n");
         } else {
@@ -94,7 +68,7 @@ public class DataManager {
         }
     }
 
-    public static void updateData(){
+    public void updateData(){
         readData();
         System.out.print("수정할 데이터의 번호를 입력하세요. : ");
         int updateId = in.nextInt();
@@ -130,7 +104,7 @@ public class DataManager {
     }
 
 
-    public static void deleteData(){
+    public void deleteData(){
         readData();
         System.out.print("삭제할 데이터의 번호를 입력하세요. : ");
         int deleteId = in.nextInt();
@@ -152,7 +126,7 @@ public class DataManager {
     }
 
 
-    public static void searchType() {
+    public void searchType() {
         if (dataList.isEmpty()) {
             System.out.println("데이터가 없습니다.\n");
             return;
@@ -181,7 +155,7 @@ public class DataManager {
         }
     }
 
-    public static void sortData() {
+    public void sortData() {
         if(dataList.isEmpty()){
             System.out.println("데이터가 없습니다.\n");
             return;
