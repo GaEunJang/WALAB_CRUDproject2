@@ -31,6 +31,25 @@
   - `DataManager` 및 `UIManager` 인스턴스를 생성하고 사용자 인터페이스를 초기화합니다.
   - 사용자에게 메뉴를 제공하고, 사용자의 선택에 따라 `DataManager` 클래스의 메소드를 호출합니다.
 
+## 사용된 라이브러리
+- **java.util.ArrayList**
+- **java.util.Scanner**
+- **java.util.Comparator**
+- **java.io.IOException**
+- **java.io.File**
+- **java.io.BufferedReader**
+- **java.io.FileReader**
+- **java.io.PrintWriter**
+- **java.io.FileWriter**
+- **java.nio.file.Paths**
+  
+## 데이터 저장 포맷
+이 프로젝트에서는 `data.txt` 파일을 사용하여 의류 데이터를 저장합니다. 데이터 저장 포맷은 다음과 같습니다:
+
+- 각 의류 항목은 한 줄에 저장됩니다.
+- 항목의 속성은 쉼표와 공백(`", "`)으로 구분됩니다.
+- 각 항목은 `id`, `type`, `name`, `price`, `description`의 순서로 저장됩니다.
+
 ## 파일 입출력 과정 추가
 ### 데이터 로드
 - 프로그램 시작 시, `DataManager` 클래스의 생성자에서 `fileHandler.loadData()` 메소드를 호출하여 `data.txt` 파일로부터 데이터를 로드합니다.
